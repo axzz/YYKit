@@ -62,6 +62,7 @@
             YYAnimatedImageView *imageView = [[YYAnimatedImageView alloc] initWithImage:image];
             
             NSMutableAttributedString *attachText = [NSMutableAttributedString attachmentStringWithContent:imageView contentMode:UIViewContentModeCenter attachmentSize:imageView.size alignToFont:font alignment:YYTextVerticalAlignmentCenter];
+            NSLog(@"attachLength: %lu", (unsigned long)attachText.length);
             [text appendAttributedString:attachText];
         }
         

@@ -212,7 +212,7 @@ static dispatch_queue_t YYAsyncLayerGetReleaseQueue() {
         task.display(context, self.bounds.size, ^{return NO;});
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        self.contents = (__bridge id)(image.CGImage);
+        self.contents = (__bridge id)(image.CGImage); // CGImageRef to id
         if (task.didDisplay) task.didDisplay(self, YES);
     }
 }

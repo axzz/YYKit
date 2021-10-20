@@ -444,7 +444,7 @@ dispatch_semaphore_signal(_lock);
         rect = UIEdgeInsetsInsetRect(rect, container.insets);
         rect = CGRectStandardize(rect);
         cgPathBox = rect;
-        rect = CGRectApplyAffineTransform(rect, CGAffineTransformMakeScale(1, -1));
+        rect = CGRectApplyAffineTransform(rect, CGAffineTransformMakeScale(1, -1)); // 通过rect 创造cgPath
         cgPath = CGPathCreateWithRect(rect, NULL); // let CGPathIsRect() returns true
     } else if (container.path && CGPathIsRect(container.path.CGPath, &cgPathBox) && container.exclusionPaths.count == 0) {
         CGRect rect = CGRectApplyAffineTransform(cgPathBox, CGAffineTransformMakeScale(1, -1));
@@ -491,7 +491,7 @@ dispatch_semaphore_signal(_lock);
     }
     
     // create CoreText objects
-    ctSetter = CTFramesetterCreateWithAttributedString((CFTypeRef)text);
+    ctSetter = CTFramesetterCreateWithAttributedString((CFTypeRef)text); // 通过 attachments size 合理创建frame了
     if (!ctSetter) goto fail;
     ctFrame = CTFramesetterCreateFrame(ctSetter, YYCFRangeFromNSRange(range), cgPath, (CFTypeRef)frameAttrs);
     if (!ctFrame) goto fail;
@@ -2908,13 +2908,13 @@ static void YYTextDrawDecoration(YYTextLayout *layout, CGContextRef context, CGS
                         continue;
                     }
                     CGFloat offsetAlterX = size.width + 0xFFFF;
-                    CGContextSaveGState(context); {
+                    CGContextSaveGState(context); { // CGContextSaveGState函数的作用是将当前图形状态推入堆栈
                         CGSize offset = shadow.offset;
                         offset.width -= offsetAlterX;
                         CGContextSaveGState(context); {
                             CGContextSetShadowWithColor(context, offset, shadow.radius, shadow.color.CGColor);
                             CGContextSetBlendMode(context, shadow.blendMode);
-                            CGContextTranslateCTM(context, offsetAlterX, 0);
+                            CGContextTranslateCTM(context, offsetAlterX, 0); // 原点平移一个大值
                             YYTextDrawLineStyle(context, length, thickness, underline.style, underlineStart, color, isVertical);
                         } CGContextRestoreGState(context);
                     } CGContextRestoreGState(context);
@@ -3040,7 +3040,7 @@ static void YYTextDrawShadow(YYTextLayout *layout, CGContextRef context, CGSize 
                 YYTextShadow *shadow = attrs[YYTextShadowAttributeName];
                 YYTextShadow *nsShadow = [YYTextShadow shadowWithNSShadow:attrs[NSShadowAttributeName]]; // NSShadow compatible
                 if (nsShadow) {
-                    nsShadow.subShadow = shadow;
+                    nsShadow.subShadow = shadow; // NSShadow在最上
                     shadow = nsShadow;
                 }
                 while (shadow) {
