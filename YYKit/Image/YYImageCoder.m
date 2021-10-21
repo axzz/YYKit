@@ -864,6 +864,7 @@ fail:
     return NO;
 }
 
+// 解压图片
 CGImageRef YYCGImageCreateDecodedCopy(CGImageRef imageRef, BOOL decodeForDisplay) {
     if (!imageRef) return NULL;
     size_t width = CGImageGetWidth(imageRef);
@@ -1972,7 +1973,7 @@ CGImageRef YYCGImageCreateWithWebPData(CFDataRef webpData,
                 CFDictionaryRef gif = CFDictionaryGetValue(properties, kCGImagePropertyGIFDictionary);
                 if (gif) {
                     CFTypeRef loop = CFDictionaryGetValue(gif, kCGImagePropertyGIFLoopCount);
-                    if (loop) CFNumberGetValue(loop, kCFNumberNSIntegerType, &_loopCount);
+                    if (loop) CFNumberGetValue(loop, kCFNumberNSIntegerType, &_loopCount);// GIF 的 loopcount
                 }
                 CFRelease(properties);
             }

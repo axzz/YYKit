@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B5987B427192A1A00741260 /* YYViewMyTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5987B327192A1A00741260 /* YYViewMyTestController.m */; };
+		2B6E15CD27210EB2001E22FF /* CGTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B6E15CC27210EB1001E22FF /* CGTestView.m */; };
 		ABDC320D1BEAFB870012A159 /* YYTextTagExample.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDC320C1BEAFB870012A159 /* YYTextTagExample.m */; };
 		D9067DF11B975D3900F346EB /* YYTextExampleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D9067DF01B975D3900F346EB /* YYTextExampleHelper.m */; };
 		D9067DF41B9813B500F346EB /* YYTextEditExample.m in Sources */ = {isa = PBXBuildFile; fileRef = D9067DF31B9813B500F346EB /* YYTextEditExample.m */; };
@@ -199,6 +200,8 @@
 /* Begin PBXFileReference section */
 		2B5987B227192A1A00741260 /* YYViewMyTestController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYViewMyTestController.h; sourceTree = "<group>"; };
 		2B5987B327192A1A00741260 /* YYViewMyTestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYViewMyTestController.m; sourceTree = "<group>"; };
+		2B6E15CB27210EB1001E22FF /* CGTestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGTestView.h; sourceTree = "<group>"; };
+		2B6E15CC27210EB1001E22FF /* CGTestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGTestView.m; sourceTree = "<group>"; };
 		ABDC320B1BEAFB870012A159 /* YYTextTagExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTextTagExample.h; sourceTree = "<group>"; };
 		ABDC320C1BEAFB870012A159 /* YYTextTagExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTextTagExample.m; sourceTree = "<group>"; };
 		D9067DEF1B975D3900F346EB /* YYTextExampleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTextExampleHelper.h; sourceTree = "<group>"; };
@@ -647,6 +650,8 @@
 				D9067DF01B975D3900F346EB /* YYTextExampleHelper.m */,
 				2B5987B227192A1A00741260 /* YYViewMyTestController.h */,
 				2B5987B327192A1A00741260 /* YYViewMyTestController.m */,
+				2B6E15CB27210EB1001E22FF /* CGTestView.h */,
+				2B6E15CC27210EB1001E22FF /* CGTestView.m */,
 			);
 			name = Text;
 			sourceTree = "<group>";
@@ -1240,6 +1245,7 @@
 			files = (
 				D9B260961BEE79370038C00A /* YYDispatchQueuePool.m in Sources */,
 				ABDC320D1BEAFB870012A159 /* YYTextTagExample.m in Sources */,
+				2B6E15CD27210EB2001E22FF /* CGTestView.m in Sources */,
 				D9B260941BEE79370038C00A /* YYTextView.m in Sources */,
 				D9B260781BEE79370038C00A /* YYFrameImage.m in Sources */,
 				D9067E001B9879E300F346EB /* YYFPSLabel.m in Sources */,
@@ -1489,6 +1495,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = T4NQGV67A9;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
@@ -1534,6 +1541,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.axuzz.yykit;
 				PRODUCT_NAME = YYKitDemo;

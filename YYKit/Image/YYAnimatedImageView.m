@@ -383,7 +383,7 @@ typedef NS_ENUM(NSUInteger, YYAnimatedImageType) {
     }
     
     NSTimeInterval delay = 0;
-    if (!_bufferMiss) {
+    if (!_bufferMiss) { // 上一轮没有miss
         _time += link.duration;
         delay = [image animatedImageDurationAtIndex:_curIndex];
         if (_time < delay) return;

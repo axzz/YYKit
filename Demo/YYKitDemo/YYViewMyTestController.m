@@ -8,8 +8,7 @@
 
 #import "YYViewMyTestController.h"
 #import "YYKit.h"
-#import "YYTextExampleHelper.h"
-#import "YYImageExampleHelper.h"
+#import "CGTestView.h"
 
 @interface YYViewMyTestController ()
 @property (nonatomic, strong)YYLabel *label;
@@ -20,42 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    CGTestView *drawView = [CGTestView new];
+    drawView.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
+    drawView.height = self.view.height * 1 / 2;
+    drawView.width = self.view.width;
+    drawView.center = self.view.center;
+    [self.view addSubview:drawView];
     // Do any additional setup after loading the view.
-    
-    [YYTextExampleHelper addDebugOptionToViewController:self];
-
-    
-    NSMutableAttributedString *text = [NSMutableAttributedString new];
-    UIFont *font = [UIFont systemFontOfSize:16];
-    
-    {
-        NSString *title = @"Att:\nA:";
-        [text appendAttributedString:[[NSAttributedString alloc] initWithString:title attributes:nil]];
-        
-        UIImage *image = [UIImage imageNamed:@"dribbble64_imageio"];
-        image = [UIImage imageWithCGImage:image.CGImage scale:2 orientation:UIImageOrientationUp];
-
-        NSMutableAttributedString *attachText = [NSMutableAttributedString attachmentStringWithContent:nil contentMode:UIViewContentModeCenter attachmentSize:CGSizeZero alignToFont:font alignment:YYTextVerticalAlignmentCenter];
-//        [text appendAttributedString:attachText];
-        [text replaceCharactersInRange:NSMakeRange(1, 2) withAttributedString:attachText];
-//        [text appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n" attributes:nil]];
-        
-        NSLog(@"text length:%lu", (unsigned long)text.length);
-    }
-    
-    text.font = font;
-    
-    _label = [YYLabel new];
-    _label.userInteractionEnabled = YES;
-    _label.numberOfLines = 0;
-    _label.textVerticalAlignment = YYTextVerticalAlignmentTop;
-    _label.size = CGSizeMake(260, 260);
-    _label.center = CGPointMake(self.view.width / 2, self.view.height / 2 - (kiOS7Later ? 0 : 32));
-    _label.attributedText = text;
-    [self.view addSubview:_label];
-    
-    _label.layer.borderWidth = CGFloatFromPixel(1);
-    _label.layer.borderColor = [UIColor colorWithRed:0.000 green:0.463 blue:1.000 alpha:1.000].CGColor;
 }
 
 /*
